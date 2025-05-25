@@ -23,8 +23,8 @@ Este é um script Python simples que simula a criação e distribuição de cart
 
     Se você clonar:
     ```bash
-    git clone [https://github.com/Gabriel-Rosatto-Dantas/BARALHO-DE-CARTAS)
-    cd SEU-REPOSITORIO
+    git clone https://github.com/Gabriel-Rosatto-Dantas/BARALHO-DE-CARTAS
+    cd BARALHO-DE-CARTAS
     ```
 2.  **Execute o script** a partir do seu terminal:
     ```bash
