@@ -2,7 +2,7 @@ import random
 
 NAIPES = ['♠', '♥', '♦', '♣']
 VALORES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-CORINGAS = ('JOKER1', 'JOKER2') # Renomeado para CORINGAS (plural) para clareza, é uma tupla de strings
+CORINGAS = ('JOKER1', 'JOKER2') 
 
 # Função para gerar um baralho novo
 def gerar_baralho(copias=1, incluir_coringas=False, embaralhar=False):
@@ -16,9 +16,9 @@ def gerar_baralho(copias=1, incluir_coringas=False, embaralhar=False):
         
         # Adiciona coringas a esta cópia do deck, se solicitado
         if incluir_coringas:
-            uma_copia_deck.extend(CORINGAS) # CORINGAS é ('JOKER1', 'JOKER2'), extend adiciona cada string
+            uma_copia_deck.extend(CORINGAS) 
         
-        baralho_final.extend(uma_copia_deck) # Adiciona a cópia processada (com ou sem coringas) ao baralho final
+        baralho_final.extend(uma_copia_deck) 
 
     if embaralhar:
         random.shuffle(baralho_final)
@@ -26,8 +26,8 @@ def gerar_baralho(copias=1, incluir_coringas=False, embaralhar=False):
 
 # Função para mostrar o baralho
 def mostrar_baralho(baralho):
-    print(f'\nBaralho ({len(baralho)} cartas):') # Pequena alteração no texto para clareza
-    if baralho: # Evita erro se tentar juntar uma lista vazia e imprimir uma linha extra desnecessária
+    print(f'\nBaralho ({len(baralho)} cartas):') 
+    if baralho: 
         print(', '.join(baralho))
     else:
         print("O baralho está vazio.")
@@ -40,19 +40,14 @@ def dar_as_cartas(baralho, num_jogadores, cartas_por_jogador):
     # Verifica se há cartas suficientes antes de começar a distribuir
     if len(baralho) < cartas_a_dar_total:
         print(f"Aviso: Não há cartas suficientes no baralho para dar {cartas_por_jogador} cartas a {num_jogadores} jogadores.")
-        # Decide se quer parar ou distribuir o que for possível.
-        # Aqui, vamos distribuir o que for possível, mas o loop abaixo já lida com baralho vazio.
-        # Ou poderia retornar None ou levantar um erro:
-        # return None 
 
     for _ in range(cartas_por_jogador): # Rodada de distribuição
-        for jogador_id in jogadores: # Para cada jogador na rodada
-            if baralho: # Se ainda há cartas no baralho
+        for jogador_id in jogadores: 
+            if baralho: 
                 jogadores[jogador_id].append(baralho.pop(0))
             else:
-                # Se o baralho acabar no meio da distribuição para esta rodada
                 print("O baralho acabou durante a distribuição.")
-                return jogadores # Retorna o que foi distribuído até agora
+                return jogadores 
     return jogadores
 
 # Função para mostrar as cartas dos jogadores
@@ -121,7 +116,6 @@ if __name__ == '__main__':
         mostrar_baralho(baralho_principal)
 
         # Distribuição de cartas
-        # A função dar_as_cartas modifica baralho_principal diretamente (usando .pop())
         maos_dos_jogadores = dar_as_cartas(baralho_principal, num_jogadores, cartas_por_jogador)
 
         # Exibir baralho restante
